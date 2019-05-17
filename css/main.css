@@ -1,0 +1,8 @@
+@import 'navbar.css';
+@import 'slider.css';
+@import 'blog.css';
+
+
+body {
+	min-height: 1920px;
+}
