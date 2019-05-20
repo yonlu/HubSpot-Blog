@@ -50,3 +50,92 @@
 	width: 40px;
 	border-radius: 50%;
 }
+
+/* LATEST POSTS */
+
+.latest-posts-container h2 {
+	text-transform: uppercase;
+	padding-bottom: 8px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 16px;
+	color: rgba(0, 0, 0, 0.84);
+	margin: 0;
+}
+
+.latest-posts {
+padding-top: 12px;
+padding-bottom: 12px;
+display: block;
+}
+
+.latest-posts .latest-post {
+	max-width: 1032px;
+	box-sizing: border-box;
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+}
+
+.latest-post .post-container {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	display: flex;
+}
+
+.post-container .post {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	margin-right: 0px;
+	justify-content: space-between;
+	padding-right: 24px;
+	box-sizing: border-box;
+}
+
+.post-container .post h3 {
+	font-size: 21.6px;
+	max-height: 48px;
+	line-height: 24px;
+	text-overflow: ellipsis;
+	color: rgba(0, 0, 0, 0.84);
+	margin: 0;
+	font-weight: 600;
+}
+
+.post-container .post-image-container {
+	display: block;
+	box-sizing: inherit;
+}
+
+.post-container .post-image-container .post-image {
+	height: 100%;
+	display: block;
+	box-sizing: inherit;
+}
+
+.post-container .post-image-container .post-image a {
+	width: 152px;
+	background-image: url("https://miro.medium.com/max/304/1*FfI0apj_DLEksyK79PmBBw.jpeg");
+	background-position: 50% 50%;
+	background-size: cover;
+	background-origin: border-box;
+	height: 100%;
+	display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
