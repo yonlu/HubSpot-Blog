@@ -1,8 +1,14 @@
 @import 'navbar.css';
 @import 'slider.css';
 @import 'blog.css';
+@import 'sidebar.css';
 
 
 body {
 	min-height: 1920px;
+}
+
+a {
+	color: inherit;
+	text-decoration: inherit;
 }
