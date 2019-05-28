@@ -1,5 +1,5 @@
 .carousel-item {
 	height: 75vh;
-	background-size: cover;
-	background-position: 50% 50%;
+	background-size: cover !important;
+	background-position: 50% 50% !important;
 }
