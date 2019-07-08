@@ -1,15 +1,26 @@
-@import 'navbar.css';
-@import 'slider.css';
-@import 'blog.css';
-@import 'sidebar.css';
-@import 'post.css';
+@import "navbar.css";
+@import "slider.css";
+@import "blog.css";
+@import "sidebar.css";
+@import "post.css";
+@import "footer.css";
+@import "medium-classes.css";
 
+:root {
+  margin: 0;
+  padding: 0;
+}
 
 body {
-	min-height: 1920px;
+  min-height: 100%;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
 }
 
 a {
-	color: inherit;
-	text-decoration: inherit;
+  color: inherit;
+  text-decoration: inherit;
 }
