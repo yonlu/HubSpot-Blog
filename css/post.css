@@ -1,12 +1,10 @@
-.post-container {
-  max-width: 740px;
+.single-post-container {
   margin-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
-.post-container .post-section {
-  margin-top: 20px;
+.post-section {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .post-section h1 {
