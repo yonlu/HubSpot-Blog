@@ -1,282 +1,166 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SimTalkBlog</title>
+        <meta name="description" content="{{ content.meta_description }}">
+        <script src="https://kit.fontawesome.com/8eaa518e93.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="HubL/blog-medium.css">
+    </head>
+    <body>
+    <!-- NAVIGATION -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light mx-auto">
+        <div class="navbar-brand">
+          <h1><a href="{{ group.absolute_url }}">Simtalk Blog</a> <small>Simulation in Healthcare Education</small></h1>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="css/main.css">
-
-
-    <title>Hello, world!</title>
-  </head>
-  <body data-target="#navbarResponsive">
-
-        <!-- NAVIGATION -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-			<a class="navbar-brand">Simtalk</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-						<a class="nav-link" href="#">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Contact Us</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">News and Events</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ group.absolute_url }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ group.absolute_url }}/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ group.absolute_url }}/tag/nursing-education">NurseEd</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ group.absolute_url }}/tag/moulage-education">MoulageEd</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ group.absolute_url }}/tag/pharm-education">PharmEd</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ group.absolute_url }}/tag/ct-education">CTEd</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ group.absolute_url }}/tag/pt-education">PTEd</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.pocketnurse.com/">Pocket Nurse</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
 		<!-- SLIDER -->
 		<div id="carouselExampleIndicators" class="carousel slide mb-5" data-ride="carousel" data-interval="7000">
 			<ol class="carousel-indicators">
-				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-primary">
-				<li data-target="#carouselExampleIndicators" data-slide-to="1" class="bg-primary">
-				<li data-target="#carouselExampleIndicators" data-slide-to="2" class="bg-primary">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+				<li data-target="#carouselExampleIndicators" data-slide-to="1">
+				<li data-target="#carouselExampleIndicators" data-slide-to="2">
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<!-- Slide 1 -->
-				<div class="carousel-item active" style="background: linear-gradient(45deg, rgba(29, 224, 153, 0.8), rgba(29, 200, 205, 0.8)), url('img/nurse-banner.jpg');">
+				<div class="carousel-item active" style="background-image: url('https://dummyimage.com/1920/5e575e/fff.png');">
 				</div>
-				<div class="carousel-item" style="background: linear-gradient(45deg, rgba(29, 224, 153, 0.8), rgba(29, 200, 205, 0.8)), url('img/nurse-banner.jpg');"></div>
-				<div class="carousel-item" style="background: linear-gradient(45deg, rgba(29, 224, 153, 0.8), rgba(29, 200, 205, 0.8)), url('img/nurse-banner.jpg');"></div>
+				<div class="carousel-item" style="background-image: url('https://dummyimage.com/1920/5e575e/fff.png');"></div>
+				<div class="carousel-item" style="background-image: url('https://dummyimage.com/1920/5e575e/fff.png');"></div>
 			</div>
 		</div>
 
-
 		<!-- BLOG CONTENT -->
-		<section class="blog-content">
+		<section class="blog-content {% if blog_author or topic %} listing-view {% endif %}">
 			<div class="row">
 				<!-- BLOG POSTS -->
 				<div class="col-md-8">
 					<div class="blog-posts-container">
-						<div class="featured-post-container">
-							<div class="featured-post">
-								<div>
-									<a href="#" class="image"></a>
-								</div>
-								<div class="title">
-									<h1>Featured Post Title</h1>	
-									<p>An increasingly tech-obsessed culture calls for more responsible design</p>
-								</div>
-								<div class="author-container">
-									<div class="author">
-										<a href="">
-											<img class="image" src="https://miro.medium.com/fit/c/80/80/1*uxG9QsAM2FBz21Iau7tyHQ.jpeg" />
-										</a>
-										<div class="info">
-											<span class="name">Lucas Sallada</span>
-											<span class="date">May 16, 2019</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+            <!-- FEATURED POST -->
+            <!-- DISABLES FEATURED POST ON BLOG AUTHOR  AND TOPIC LISTING -->
+              <div class="featured-post-container">
+                <div class="featured-post">
+                  <div>
+                    <a href="{{ topic_post.absolute_url }}" class="image" style="background-image: url('img/cat-racing.jpg');"></a>
+                  </div>
+                  <div class="title">
+                    <h1><a href="{{ topic_post.absolute_url }}">Feature Post Title</a></h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam recusandae, earum cumque officia veniam officiis modi? Modi, nesciunt, fugiat neque inventore quidem maxime minus reprehenderit possimus ut ipsam, ad nam.</p>
+                  </div>
+                  <div class="author-container">
+                    <div class="author">
+                      <a href="">
+                        <img class="image" src="img/cat-racing.jpg" />
+                      </a>
+                      <div class="info">
+                        <span class="name"><a href="{{ group.absolute_url }}/author/{{ topic_post.blog_post_author.slug }}">Feature post author name</a></span>
+                        <span class="date">January 1, 2019</span>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
 
 						<div class="latest-posts-container">
-							<h2>Latest</h2>		
-                            <section class="w x y ft ab n">
-                                <div class="y du">
-                                    <section class="fr fs ae">
-                                        <div class="v fu ab ae fv cv fw fx fy ah">
-                                            <div class="fz n fy ah cy">
-                                                <div class="ef eg">
-                                                    <h3 class="aq cd da bb db bc em ga gb as av eo dg dh au">
-                                                        <a href="https://medium.com/@simonstillspace/please-feed-the-lions-cdd798b40952?source=topic_page---------0------------------1">Mobile has Replaced Desktop and That's Scary</a>
-                                                    </h3>
-                                                    <div class="el n">
-                                                        <p class="bg bh bb b bc bd be bf as av dj dg dh au ef ep">
-                                                            <a href="https://medium.com/@simonstillspace/please-feed-the-lions-cdd798b40952?source=topic_page---------0------------------1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis modi eaque ad similique, corrupti assumenda magni culpa eum ullam quaerat repellat dicta esse rerum, iusto vel numquam eius nostrum. Delectus?</a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gh n">
-                                                <div class="n fw">
-                                                    <div class="ae">
-                                                        <span class="bb b bc bd be bf as av dj dg dh au aq cd">
-                                                            <a href="/@simonstillspace?source=topic_page---------0------------------1"></a>
-                                                        </span>
-                                                    </div>
-                                                    <span>
-                                                        <a href="#">Lucas Sallada</a>
-                                                    </span>
-                                                    <span class="bb b bc bd be bf n bg bh">
-                                                        <div class="ae af">
-                                                            <div class="ff ae fg">
-                                                                May 21, 2019
-                                                            </div>
-                                                            <div class="fj an n fk ba">
-                                                            </div>
-                                                        </div>
-                                                    </span>
-                                                </div>
-                                                <div class="n fk ba gi">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="n">
-                                           <div class="du n g">
-                                               <a href="https://medium.com/@simonstillspace/please-feed-the-lions-cdd798b40952?source=topic_page---------0------------------1" class="n dx dy gd gk du gl"></a>
-                                           </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </section>
-                            <section class="w x y ft ab n">
-                                <div class="y du">
-                                    <section class="fr fs ae">
-                                        <div class="v fu ab ae fv cv fw fx fy ah">
-                                            <div class="fz n fy ah cy">
-                                                <div class="ef eg">
-                                                    <h3 class="aq cd da bb db bc em ga gb as av eo dg dh au">
-                                                        <a href="https://medium.com/@simonstillspace/please-feed-the-lions-cdd798b40952?source=topic_page---------0------------------1">Mobile has Replaced Desktop and That's Scary</a>
-                                                    </h3>
-                                                    <div class="el n">
-                                                        <p class="bg bh bb b bc bd be bf as av dj dg dh au ef ep">
-                                                            <a href="https://medium.com/@simonstillspace/please-feed-the-lions-cdd798b40952?source=topic_page---------0------------------1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis modi eaque ad similique, corrupti assumenda magni culpa eum ullam quaerat repellat dicta esse rerum, iusto vel numquam eius nostrum. Delectus?</a>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gh n">
-                                                <div class="n fw">
-                                                    <div class="ae">
-                                                        <span class="bb b bc bd be bf as av dj dg dh au aq cd">
-                                                            <a href="/@simonstillspace?source=topic_page---------0------------------1"></a>
-                                                        </span>
-                                                    </div>
-                                                    <span class="bb b bc bd be bf n bg bh">
-                                                        <div class="ae af">
-                                                            <div class="ff ae fg">
-                                                                May 21, 2019
-                                                                <div class="fh fi n">
-                                                                    <span class="n">
-                                                                        <span class="bb b bc bd be bf n bg bh">.</span>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="fj an n fk ba">
-                                                            </div>
-                                                        </div>
-                                                    </span>
-                                                </div>
-                                                <div class="n fk ba gi">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="n">
-                                           <div class="du n g">
-                                               <a href="https://medium.com/@simonstillspace/please-feed-the-lions-cdd798b40952?source=topic_page---------0------------------1" class="n dx dy gd gk du gl"></a>
-                                           </div>
-                                        </div>
-                                    </section>
-                                </div>
-                            </section>
-
-                            <div class="latest-posts">
-                                
-								<section class="latest-post">
-									<div class="post-container">
-										<div class="post">
-											<h3>Mobile has Replaced Desktop, and That's Scary</h3>
-											<p>Why's everyone celebrating the demise of PC?</p>
-
-											<div class="author-date-container">
-												<div class="author-date-flex">
-													<div class="author-date">
-														<div class="author">
-															<span>Lucas Sallada</span>
-														</div>
-														<div class="date">
-															<span>May 21, 2019</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="post-image-container">
-											<div class="post-image">
-												<a href="#"></a>
-											</div>
-										</div>
-									</div>
-								</section>
-							</div>
-							<div class="latest-posts">
-								<section class="latest-post">
-									<div class="post-container">
-										<div class="post">
-											<h3>Mobile has Replaced Desktop, and That's Scary</h3>
-											<p>Why's everyone celebrating the demise of PC?</p>
-
-											<div class="author-date-container">
-												<div class="author-date-flex">
-													<div class="author-date">
-														<div class="author">
-															<span>Lucas Sallada</span>
-														</div>
-														<div class="date">
-															<span>May 21, 2019</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="post-image-container">
-											<div class="post-image">
-												<a href="#"></a>
-											</div>
-										</div>
-									</div>
-								</section>
-							</div>
-							<div class="latest-posts">
-								<section class="latest-post">
-									<div class="post-container">
-										<div class="post">
-											<h3>Mobile has Replaced Desktop, and That's Scary</h3>
-											<p>Why's everyone celebrating the demise of PC?</p>
-
-											<div class="author-date-container">
-												<div class="author-date-flex">
-													<div class="author-date">
-														<div class="author">
-															<span>Lucas Sallada</span>
-														</div>
-														<div class="date">
-															<span>May 21, 2019</span>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="post-image-container">
-											<div class="post-image">
-												<a href="#"></a>
-											</div>
-										</div>
-									</div>
-								</section>
-							</div>
+							<h2>Latest</h2>
+              <!-- FILTER ALL TOPICS WITH FEATURED TAG TO NOT SHOW UP -->
+              <section class="w x y ft ab n">
+                <div class="y du">
+                  <section class="fr fs ae">
+                    <div class="v fu ab ae fv cv fw fx fy ah">
+                      <div class="fz n fy ah cy">
+                        <div class="ef eg">
+                          <h3 class="aq cd da bb db bc em ga gb as av eo dg dh au">
+                            <a href="{{ post.absolute_url }}">Post Title</a>
+                          </h3>
+                          <div class="el n">
+                            <p class="bg bh bb b bc bd be bf as av dj dg dh au ef ep">
+                              <a href="{{ post.absolute_url }}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto fugit deleniti aperiam necessitatibus excepturi recusandae numquam ratione deserunt totam, autem veritatis non ut quidem quibusdam! Porro a quasi consectetur eum?</a>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="gh n">
+                        <div class="n fw">
+                          <div class="ae">
+                            <span class="bb b bc bd be bf as av dj dg dh au aq cd">
+                              <a href="/@simonstillspace?source=topic_page---------0------------------1"></a>
+                            </span>
+                          </div>
+                          <span>
+													  <a href="{{ group.absolute_url }}/author/{{ post.blog_post_author.slug }}">Post author name</a>
+                          </span>
+                          <span class="bb b bc bd be bf n bg bh">
+                            <div class="ae af">
+                              <div class="ff ae fg">
+                               January 1, 2019
+                              </div>
+                              <div class="fj an n fk ba">
+                              </div>
+                            </div>
+                          </span>
+                        </div>
+                        <div class="n fk ba gi">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="n">
+                      <div class="du n g">
+                        <a href="{{ post.absolute_url }}" style="background-image: url('img/cat-racing.jpg')" class="n dx dy gd gk du gl"></a>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </section>
 						</div>
+
+            <div class="blog-pagination">
+                <ul>
+                    <li class="first-posts-link {% if current_pg_index <= 1 %}hide{% endif %}"><a href="{{ blog_page_link(1) }}"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li class="previous-posts-link {% if !last_page_num %}hide{% endif %}"><a href="{{ blog_page_link(last_page_num) }}"><i class="fa fa-angle-left"></i></a></li>
+                    <span class="pg">
+                    </span>
+                    <li class="next-posts-link {% if current_pg_index == contents.total_page_count %}hide{% endif %}"><a href="{{ blog_page_link(next_page_num) }}"><i class="fa fa-angle-right"></i></a></li>
+                    <li class="last-posts-link {% if current_pg_index == contents.total_page_count %}hide{% endif %}"><a href="{{ blog_page_link(contents.total_page_count) }}"><i class="fa fa-angle-double-right"></i></a></li>
+                </ul>
+            </div>
+
 					</div>
 				</div>
 
@@ -303,108 +187,89 @@
 							<h2 class="related-topics">Related Topics</h2>
 						</div>
 
-						<div class="related-item-container">
-							<a href="#"><span class="related-item">Software Engineering</span></a>
-						</div>
-
-						<div class="related-item-container">
-							<a href="#"><span class="related-item">Programming</span></a>
-						</div>
-
-						<div class="related-item-container">
-							<a href="#"><span class="related-item">Artificial Intelligence</span></a>
-						</div>
-
-						<div class="related-item-container">
-							<a href="#"><span class="related-item">Blockchain</span></a>
-						</div>
-
-						<div class="related-item-container">
-							<a href="#"><span class="related-item">Cryptocurrency</span></a>
-						</div>
-
+            <div class="related-item-container">
+              <div class="related-item">Related 1</div>
+              <div class="related-item">Related 2</div>
+              <div class="related-item">Related 3</div>
+              <div class="related-item">Related 4</div>
+              <div class="related-item">Related 5</div>
+            </div>
+            <!-- POPULAR IN CATEGORY -->
 						<div class="popular-in-category-container">
-							<h2 class="popular-in-category">Popular in category</h2>
+							<h2 class="popular-in-category">Popular posts</h2>
 
 							<div class="popular-item-container">
 								<article class="popular-item">
 									<div class="popular-item-title">
-										<h4><a href="#">Warning Signs That a Bubble Is About to Burst</a></h4>
+										<h4><a href="{{ pop_post.absolute_url }}">{{ pop_post.name }}</a></h4>
 									</div>
 									<div class="popular-item-image-container">
-										<a class="popular-item-image"></a>
+										<a class="popular-item-image" style="background-image: url('{{ pop_post.featured_image }}')"></a>
 									</div>
 								</article>
-							</div>
-							
-							<div class="popular-item-container">
-								<article class="popular-item">
-									<div class="popular-item-title">
-										<h4><a href="#">Warning Signs That a Bubble Is About to Burst</a></h4>
-									</div>
-									<div class="popular-item-image-container">
-										<a class="popular-item-image"></a>
-									</div>
-								</article>
-							</div>
-
-							<div class="popular-item-container">
-								<article class="popular-item">
-									<div class="popular-item-title">
-										<h4><a href="#">Warning Signs That a Bubble Is About to Burst</a></h4>
-									</div>
-									<div class="popular-item-image-container">
-										<a class="popular-item-image"></a>
-									</div>
-								</article>
-							</div>
-
-							<div class="popular-item-container">
-								<article class="popular-item">
-									<div class="popular-item-title">
-										<h4><a href="#">Warning Signs That a Bubble Is About to Burst</a></h4>
-									</div>
-									<div class="popular-item-image-container">
-										<a class="popular-item-image"></a>
-									</div>
-								</article>
-							</div>
-
-							<div class="popular-item-container">
-								<article class="popular-item">
-									<div class="popular-item-title">
-										<h4><a href="#">Warning Signs That a Bubble Is About to Burst</a></h4>
-									</div>
-									<div class="popular-item-image-container">
-                                        <a class="popular-item-image"></a>
-                                        </div>
-								</article>
-							</div>
-
-						</div>
+              </div>
+              </div>
 					</div>
 				</div>
-			</div>
-		</section>
+      </div>
+      </section>
+     <!-- FOOTER -->
+     <footer>
+      <!-- Footer main -->
+      <section class="ft-main">
+        <div class="ft-main-item">
+          <h2 class="ft-title">Stay Updated</h2>
+          <p>Follow us on Twitter to get our latest news.</p>
+          <a class="twitter-timeline" data-width="450" data-height="350" data-dnt="true"  href="https://twitter.com/Pocket_Nurse?ref_src=twsrc%5Etfw">Tweets by Pocket_Nurse</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <div class="ft-main-item">
+          <h2 class="ft-title">About</h2>
+          <ul>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="ft-main-item">
+          <h2 class="ft-title"><a href="https://www.pocketnurse.com/default/">Products</a></h2>
+          <ul>
+            <li><a href="https://www.pocketnurse.com/default/products/demo-dose">Demo Dose</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/furniture">Furniture</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/manikins-simulators">Manikins and Task Trainers</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/moulage">Moulage</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/patient-care">Patient Care</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/pharm-lab">Pharmacy / IV Supplies</a></li>
+          </ul>
+        </div>
+        <div class="ft-main-item">
+          <h2 class="ft-title">Contact Us</h2>
+          <ul>
+            <li><a href="mailto:simtalkblog@pocketnurse.com?subject=Mail from SimTalkBlog">SimTalkBlog@pocketnurse.com</a></li>
+            <li>610 Frankfort Road</li>
+            <li>Monaca, PA 15061</li>
+            <li>800-225-1600</li>
+            <li>7 a.m. - 6 p.m. Monday through Friday.</li>
+          </ul>
+        </div>
+      </section>
 
-		<footer>
-			<div class="footer-item">
-				<h3>Follow Me On Twitter</h3>
-<a class="twitter-timeline" data-width="450" data-height="450" data-dnt="true" data-theme="dark" href="https://twitter.com/Pocket_Nurse?ref_src=twsrc%5Etfw">Tweets by Pocket_Nurse</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-			</div>
-			<div class="footer-item">
-				<h3>Hours & Info</h3>
-				<p>610 Frankfort Road</p>
-				<p>Monaca, PA 15061</p>
-				<p>800-225-1600</p>
-				<p>7 a.m. - 6 p.m., Mon. through Fri.</p>
-			</div>
-		</footer>
+      <!-- Footer social -->
+      <section class="ft-social">
+        <ul class="ft-social-list">
+          <li><a href="https://www.facebook.com/PocketNurseEnt/"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/Pocket_Nurse"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="https://www.linkedin.com/company/pocketnurse/"><i class="fab fa-linkedin"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UCWcPOEgDxgVP-XoiPDIX30w"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </section>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <!-- Footer legal -->
+      <section class="ft-legal">
+        <ul class="ft-legal-list">
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li>&copy; 2019 Copyright Pocket Nurse.</li>
+        </ul>
+      </section>
+    </footer>
   </body>
 </html>
