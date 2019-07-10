@@ -1,5 +1,5 @@
 /* @import url('http://example.com/example_style.css'); */
- @import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
 /***********************************************/
 /* CSS @imports must be at the top of the file */
 /* Add them above this section                 */
@@ -18,7 +18,7 @@ body {
 
 ul {
   list-style: none;
-  padding-left: 0;  
+  padding-left: 0;
 }
 
 a {
@@ -27,22 +27,25 @@ a {
 }
 
 a:hover {
-	color: #000;  
+	color: #000;
 }
 
 .carousel-item {
-	height: 75vh;
+	height: 55vh;
 	background-size: cover;
 	background-position: 50% 50%;
 }
 
 /* NAVBAR */
+header {
+	background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px 0px;  
+}
 .navbar {
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: .9rem;
 	letter-spacing: .1rem;
-	background: #fff;
 }
 
 .navbar-nav li {
@@ -55,7 +58,19 @@ a:hover {
 }
 
 .navbar-brand {
-	color: rgba(0,0,0,.54);
+  text-transform: none;
+}
+
+.navbar-brand h1 {
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";  
+ font-size: 24px;
+}
+
+.navbar-brand small {
+ display: block;
+ font-size: 12px;
+ margin-top: 2px;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";  
 }
 
 .navbar-light .navbar-nav .nav-link.active,
@@ -110,8 +125,15 @@ a:hover {
 }
 
 .author-container .info {
-	margin-left: 16px;
-	display: block;
+  display: flex;
+  flex-direction: column;
+	margin-left: 16px;	
+}
+
+.author-container .info .date {
+ font-size: 14.8px;
+ font-weight: 400;
+ color: rgba(0,0,0,0.54);
 }
 
 .featured-post .author .image {
@@ -430,7 +452,7 @@ display: block;
 
 /* FOOTER */
 footer {
-  background-color: #002954;
+  background-color: #555;
   color: #bbb;
   line-height: 1.5;
 }
@@ -502,6 +524,11 @@ footer a:hover {
 /* one before the last child */
 .ft-legal-list li:nth-last-child(2) {
     flex: 1;
+}
+
+/* LISTING PAGE CLASSES */
+.listing-view {
+ margin: 40px auto; 
 }
 
 /* MEDIUM CSS CLASSES */
