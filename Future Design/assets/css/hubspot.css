@@ -1,0 +1,40 @@
+/* @import url('http://example.com/example_style.css'); */
+
+/***********************************************/
+/* CSS @imports must be at the top of the file */
+/* Add them above this section                 */
+/***********************************************/
+
+/*****************************************/
+/* Start your style declarations here    */
+/*****************************************/
+
+/* REMOVE HUBSPOT BOILERPLATE */
+.header-container.container-fluid,
+.body-container.container-fluid,
+.footer-container.container-fluid {
+  padding: 0;
+}
+
+.container-fluid:before,
+.container-fluid:after {
+  display: none;
+}
+
+.row-fluid [class*="span"] {
+  min-height: 0;
+}
+
+/* SIDEBAR WIDGETS */
+.widget-module ul {
+  list-style-type: none;
+}
+
+.widget-module ul li {
+  border-top: none;
+  margin: 0;
+}
+
+.widget-module ul li a {
+  border-bottom: none;
+}

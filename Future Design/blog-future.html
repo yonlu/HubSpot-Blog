@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{{ content.html_title }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+    <script src="https://kit.fontawesome.com/8eaa518e93.js"></script>
+    <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/hubspot.css') }}">
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="{{ group.absolute_url }}">SimTalk Blog</a></h1>
+						<nav class="links">
+							<ul>
+								<li><a href="{{ group.absolute_url }}">Home</a></li>
+								<li><a href="{{ group.absolute_url }}/about">About</a></li>
+								<li><a href="{{ group.absolute_url }}/tag/nursing-education">NurseEd</a></li>
+								<li><a href="{{ group.absolute_url }}/tag/moulage-education">MoulageEd</a></li>
+								<li><a href="{{ group.absolute_url }}/tag/pharm-education">PharmEd</a></li>
+                <li><a href="{{ group.absolute_url }}/tag/ct-education">CTEd</a></li>
+                <li><a href="{{ group.absolute_url }}/tag/pt-education">PTEd</a></li>
+                <li><a href="https://www.pocketnurse.com/">Pocket Nurse</a></li>
+							</ul>
+						</nav>
+						<nav class="main">
+							<ul>
+								<li class="menu">
+									<a class="fa-bars" href="#menu">Menu</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<section id="menu">
+
+						<!-- Search -->
+							<section>
+								<form class="search" method="get" action="#">
+									<input type="text" name="query" placeholder="Search" />
+								</form>
+							</section>
+
+						<!-- Links -->
+							<section>
+								<ul class="links">
+									<li>
+										<a href="#">
+											<h3>Lorem ipsum</h3>
+											<p>Feugiat tempus veroeros dolor</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Dolor sit amet</h3>
+											<p>Sed vitae justo condimentum</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Feugiat veroeros</h3>
+											<p>Phasellus sed ultricies mi congue</p>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<h3>Etiam sed consequat</h3>
+											<p>Porta lectus amet ultricies</p>
+										</a>
+									</li>
+								</ul>
+							</section>
+
+						<!-- Actions -->
+							<section>
+								<ul class="actions stacked">
+									<li><a href="#" class="button large fit">Log In</a></li>
+								</ul>
+							</section>
+
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+                          {# Need help setting up site search?
+                 Start here: https://knowledge.hubspot.com/articles/kcs_article/cos-general/how-do-i-set-up-a-results-page-for-my-search-field-in-hubspot #}
+
+              <div class="hs-search-field">
+                  <div class="hs-search-field__bar">
+                    <form action="/{{ site_settings.content_search_results_page_path }}">
+                      {% if module.field_label %}
+                        <label for="term">{{ module.field_label }}</label>
+                      {% endif %}
+                      <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="{{ module.field_label || "Search" }}" placeholder="{{ module.placeholder }}">
+
+                      {% if module.content_types.website_pages %}
+                        <input type="hidden" name="type" value="SITE_PAGE">
+                      {% endif %}
+                      {% if module.content_types.landing_pages %}
+                        <input type="hidden" name="type" value="LANDING_PAGE">
+                      {% endif %}
+                      {% if module.content_types.blog_posts %}
+                        <input type="hidden" name="type" value="BLOG_POST">
+                        <input type="hidden" name="type" value="LISTING_PAGE">
+                      {% endif %}
+                      {% if module.content_types.knowledge_articles %}
+                        <input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+                      {% endif %}
+
+                      {% if module.include_search_button %}
+                        <button aria-label="Search">{% icon name="search" style="solid" %}</button>
+                      {% endif %}
+                    </form>
+                  </div>
+                  <ul class="hs-search-field__suggestions"></ul>
+              </div>
+
+            {% if is_listing_view %}
+            {% for post in contents %}
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="{{ post.absolute_url }}">{{ post.name }}</a></h2>
+									</div>
+									<div class="meta">
+										<time class="published">{{ post.publish_date|datetimeformat('%B %e, %Y') }}</time>
+										<a href="{{ group.absolute_url}}/author/{{ post.blog_post_author.slug }}" class="author"><span class="name">{{ post.blog_post_author.display_name }}</span><img src="{{ post.blog_author.avatar }}" alt="" /></a>
+									</div>
+								</header>
+								<a href="{{ post.absolute_url }}" class="image featured"><img src="{{ post.featured_image }}" alt="" /></a>
+								<p>{{ post.post_summary |truncate(360) }}</p>
+								<footer>
+									<ul class="actions">
+										<li><a href="{{ post.absolute_url }}" class="button large">Continue Reading</a></li>
+									</ul>
+									<ul class="stats">
+										<li><a href="#">General</a></li>
+										<li><a href="#" class="icon solid fa-heart">28</a></li>
+										<li><a href="#" class="icon solid fa-comment">128</a></li>
+									</ul>
+								</footer>
+							</article>
+            {% endfor %}
+
+            <!-- Pagination -->
+            {% if not simple_list_page %}
+              <ul class="actions pagination">
+								<li><a href="{{ blog_page_link(last_page_num) }}" class="{% if not last_page_num %}disabled{% endif %} button large previous">Previous Page</a></li>
+                <li><a href="{{ group.absolute_url }}/all" class="button large">All Posts</a></li>
+								<li><a href="{{ blog_page_link(next_page_num) }}" class="{% if not next_page_num %}disabled{% endif %} button large next">Next Page</a></li>
+							</ul>
+            {% endif %}
+
+            {% else %}
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="{{ post.absolute_url }}">{{ content.name }}</a></h2>
+									</div>
+									<div class="meta">
+										<time class="published">{{ post.publish_date|datetimeformat('%B %e, %Y') }}</time>
+										<a href="{{ group.absolute_url }}/author/{{ content.blog_post_author.slug }}" class="author"><span class="name">{{ content.blog_post_author.display_name }}</span><img src="{{ content.blog_author.avatar }}" alt="" /></a>
+									</div>
+								</header>
+								<span class="image featured"><img src="{{ content.featured_image }}" alt="" /></span>
+								{{ content.post_body }}
+								<footer>
+									<ul class="stats">
+										<li><a href="#">General</a></li>
+										<li><a href="#" class="icon solid fa-heart">28</a></li>
+										<li><a href="#" class="icon solid fa-comment">128</a></li>
+									</ul>
+								</footer>
+							</article>
+            {% endif %}
+
+					</div>
+
+				<!-- Sidebar -->
+					<section id="sidebar">
+
+						<!-- Intro -->
+							<section id="intro">
+								<a href="#" class="image"><img src="https://cdn2.hubspot.net/hubfs/5871227/simtalkblog-head-logo.png" /></a>
+								<header>
+									<h2>SimTalk Blog</h2>
+									<p>Simulation in Healthcare Education</p>
+								</header>
+							</section>
+
+						<!-- Mini Posts -->
+							<section>
+								<div class="mini-posts">
+                  <h2>Popular Posts</h2>
+                  {% set pop_posts = blog_popular_posts('default', 5) %}
+									<!-- Mini Post -->
+                  {% for pop_post in pop_posts %}
+										<article class="mini-post">
+											<header>
+												<h3><a href="{{ pop_post.absolute_url }}">{{ pop_post.name }}</a></h3>
+												<time class="published">{{ pop_post.publish_date|datetimeformat('%B %e, %Y') }}</time>
+												<a href="{{ group.absolute_url }}/author/{{ pop_post.blog_post_author.slug }}" class="author"><img src="{{ pop_post.blog_author.avatar }}" alt="Popular post's author avatar" /></a>
+											</header>
+											<a href="{{ pop_post.absolute_url }}" class="image"><img src="{{ pop_post.featured_image }}" alt="Popular post featured image" /></a>
+										</article>
+                  {% endfor %}
+
+								</div>
+							</section>
+
+						<!-- Posts List -->
+							<section>
+								<ul class="posts">
+                {% for pop_post in pop_posts %}
+									<li>
+										<article>
+											<header>
+												<h3><a href="{{ pop_post.absolute_url }}">{{ pop_post.name }}</a></h3>
+												<time class="published">{{ pop_post.publish_date|datetimeformat('%B %e, %Y') }}</time>
+											</header>
+											<a href="{{ pop_post.absolute_url }}" class="image"><img src="{{ pop_post.featured_image }}" alt="Popular post featured image" /></a>
+										</article>
+									</li>
+                {% endfor %}
+								</ul>
+							</section>
+
+            <!-- Popular Tags -->
+              <section>
+                <h2>Popular Tags</h2>
+                <ul class="posts">
+                  {% post_filter "module_149924429563569" filter_type='topic', max_links=5, overrideable=False, select_blog='default', label='Post Filter' %}
+                </ul>
+              </section>
+
+            <!-- Archives -->
+              <section>
+                <h2>Archives</h2>
+                <ul class="posts">
+                  {% post_filter "post_filter" overrideable=False, cell=False, cells='[]', root=False, row=False, expand_link_text='see all', filter_type='month', max_links=5, select_blog='default', order_by='post_count', label='ARCHIVES' %}
+                </ul>
+              </section>
+
+						<!-- About -->
+							<section class="blurb">
+								<h2>About</h2>
+								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+								<ul class="actions">
+									<li><a href="{{ group.absolute_url }}/about" class="button">Learn More</a></li>
+								</ul>
+							</section>
+
+						<!-- Footer -->
+							<section id="footer">
+								<ul class="icons">
+									<li><a href="https://www.facebook.com/PocketNurseEnt/"><i class="fab fa-facebook"></i></a></li>
+                  <li><a href="https://twitter.com/Pocket_Nurse"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="https://www.linkedin.com/company/pocketnurse/"><i class="fab fa-linkedin"></i></a></li>
+                  <li><a href="https://www.youtube.com/channel/UCWcPOEgDxgVP-XoiPDIX30w"><i class="fab fa-youtube"></i></a></li>
+								</ul>
+							</section>
+
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/jquery.js') }}"></script>
+			<script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/browser.js') }}"></script>
+			<script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/breakpoints.js') }}"></script>
+			<script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/util.js') }}"></script>
+			<script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/main.js') }}"></script>
+
+      {{ standard_footer_includes }}
+	</body>
+</html>

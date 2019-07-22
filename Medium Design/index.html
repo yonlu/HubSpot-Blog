@@ -13,7 +13,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light mx-auto">
         <div class="navbar-brand">
-          <h1><a href="{{ group.absolute_url }}">Simtalk Blog</a> <small>Simulation in Healthcare Education</small></h1>
+          <h1><a href="#">Simtalk Blog</a> <small>Simulation in Healthcare Education</small></h1>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
           <span class="navbar-toggler-icon"></span>
@@ -22,25 +22,25 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ group.absolute_url }}">Home</a>
+              <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ group.absolute_url }}/about">About</a>
+              <a class="nav-link" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ group.absolute_url }}/tag/nursing-education">NurseEd</a>
+              <a class="nav-link" href="#">NurseEd</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ group.absolute_url }}/tag/moulage-education">MoulageEd</a>
+              <a class="nav-link" href="#">MoulageEd</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ group.absolute_url }}/tag/pharm-education">PharmEd</a>
+              <a class="nav-link" href="#">PharmEd</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ group.absolute_url }}/tag/ct-education">CTEd</a>
+              <a class="nav-link" href="#">CTEd</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ group.absolute_url }}/tag/pt-education">PTEd</a>
+              <a class="nav-link" href="#">PTEd</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://www.pocketnurse.com/">Pocket Nurse</a>
@@ -67,7 +67,7 @@
 		</div>
 
 		<!-- BLOG CONTENT -->
-		<section class="blog-content {% if blog_author or topic %} listing-view {% endif %}">
+		<section class="blog-content">
 			<div class="row">
 				<!-- BLOG POSTS -->
 				<div class="col-md-8">
@@ -77,10 +77,10 @@
               <div class="featured-post-container">
                 <div class="featured-post">
                   <div>
-                    <a href="{{ topic_post.absolute_url }}" class="image" style="background-image: url('img/cat-racing.jpg');"></a>
+                    <a href="#" class="image" style="background-image: url('img/cat-racing.jpg');"></a>
                   </div>
                   <div class="title">
-                    <h1><a href="{{ topic_post.absolute_url }}">Feature Post Title</a></h1>
+                    <h1><a href="#">Feature Post Title</a></h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam recusandae, earum cumque officia veniam officiis modi? Modi, nesciunt, fugiat neque inventore quidem maxime minus reprehenderit possimus ut ipsam, ad nam.</p>
                   </div>
                   <div class="author-container">
@@ -89,7 +89,7 @@
                         <img class="image" src="img/cat-racing.jpg" />
                       </a>
                       <div class="info">
-                        <span class="name"><a href="{{ group.absolute_url }}/author/{{ topic_post.blog_post_author.slug }}">Feature post author name</a></span>
+                        <span class="name"><a href="#">Feature post author name</a></span>
                         <span class="date">January 1, 2019</span>
                       </div>
                     </div>
@@ -107,11 +107,11 @@
                       <div class="fz n fy ah cy">
                         <div class="ef eg">
                           <h3 class="aq cd da bb db bc em ga gb as av eo dg dh au">
-                            <a href="{{ post.absolute_url }}">Post Title</a>
+                            <a href="#">Post Title</a>
                           </h3>
                           <div class="el n">
                             <p class="bg bh bb b bc bd be bf as av dj dg dh au ef ep">
-                              <a href="{{ post.absolute_url }}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto fugit deleniti aperiam necessitatibus excepturi recusandae numquam ratione deserunt totam, autem veritatis non ut quidem quibusdam! Porro a quasi consectetur eum?</a>
+                              <a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto fugit deleniti aperiam necessitatibus excepturi recusandae numquam ratione deserunt totam, autem veritatis non ut quidem quibusdam! Porro a quasi consectetur eum?</a>
                             </p>
                           </div>
                         </div>
@@ -124,7 +124,7 @@
                             </span>
                           </div>
                           <span>
-													  <a href="{{ group.absolute_url }}/author/{{ post.blog_post_author.slug }}">Post author name</a>
+													  <a href="#">Post author name</a>
                           </span>
                           <span class="bb b bc bd be bf n bg bh">
                             <div class="ae af">
@@ -142,7 +142,7 @@
                     </div>
                     <div class="n">
                       <div class="du n g">
-                        <a href="{{ post.absolute_url }}" style="background-image: url('img/cat-racing.jpg')" class="n dx dy gd gk du gl"></a>
+                        <a href="#" style="background-image: url('img/cat-racing.jpg')" class="n dx dy gd gk du gl"></a>
                       </div>
                     </div>
                   </section>
@@ -152,12 +152,12 @@
 
             <div class="blog-pagination">
                 <ul>
-                    <li class="first-posts-link {% if current_pg_index <= 1 %}hide{% endif %}"><a href="{{ blog_page_link(1) }}"><i class="fa fa-angle-double-left"></i></a></li>
-                    <li class="previous-posts-link {% if !last_page_num %}hide{% endif %}"><a href="{{ blog_page_link(last_page_num) }}"><i class="fa fa-angle-left"></i></a></li>
+                    <li class="first-posts-link"><a href="{{ blog_page_link(1) }}"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li class="previous-posts-link"><a href="{{ blog_page_link(last_page_num) }}"><i class="fa fa-angle-left"></i></a></li>
                     <span class="pg">
                     </span>
-                    <li class="next-posts-link {% if current_pg_index == contents.total_page_count %}hide{% endif %}"><a href="{{ blog_page_link(next_page_num) }}"><i class="fa fa-angle-right"></i></a></li>
-                    <li class="last-posts-link {% if current_pg_index == contents.total_page_count %}hide{% endif %}"><a href="{{ blog_page_link(contents.total_page_count) }}"><i class="fa fa-angle-double-right"></i></a></li>
+                    <li class="next-posts-link"><a href="{{ blog_page_link(next_page_num) }}"><i class="fa fa-angle-right"></i></a></li>
+                    <li class="last-posts-link"><a href="{{ blog_page_link(contents.total_page_count) }}"><i class="fa fa-angle-double-right"></i></a></li>
                 </ul>
             </div>
 
@@ -201,10 +201,10 @@
 							<div class="popular-item-container">
 								<article class="popular-item">
 									<div class="popular-item-title">
-										<h4><a href="{{ pop_post.absolute_url }}">{{ pop_post.name }}</a></h4>
+										<h4><a href="{{ pop_post.absolute_url }}">Popular post title</a></h4>
 									</div>
 									<div class="popular-item-image-container">
-										<a class="popular-item-image" style="background-image: url('{{ pop_post.featured_image }}')"></a>
+										<a class="popular-item-image" style="background-image: url('img/cat-racing.jpg')"></a>
 									</div>
 								</article>
               </div>
