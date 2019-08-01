@@ -12,29 +12,29 @@
 /* REMOVE HUBSPOT BOILERPLATE */
 .header-container.container-fluid,
 .body-container.container-fluid,
-.footer-container.container-fluid {
-  padding: 0;
+.footer-container.container-fluid{
+    padding: 0;
 }
 
 .container-fluid:before,
 .container-fluid:after {
-  display: none;
+    display: none;
 }
 
 .row-fluid [class*="span"] {
-  min-height: 0;
+    min-height: 0;
 }
 
 /* SIDEBAR WIDGETS */
-.widget-module ul {
+.widget-module ul, .products {
   list-style-type: none;
 }
 
-.widget-module ul li {
-  border-top: none;
-  margin: 0;
+.widget-module ul li, .products li {
+ border-top: none;
+ margin: 0;
 }
 
 .widget-module ul li a {
-  border-bottom: none;
+ border-bottom: none; 
 }
