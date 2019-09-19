@@ -22,7 +22,7 @@ HubSpot's obligatory header includes: `{{ standard_header_includes }}`
 Linking CSS with HubL, replace `('/Dev/Blog Future Design/*)` with desired stylesheets 
 
 ``
-<link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/fontawesome-all.css') }}">
+  <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/fontawesome-all.css') }}">
 ``
 
 Blog's root directory URL: `{{ group.absolute_url }}` 
