@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{{ content.html_title }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />		
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+    <script src="https://kit.fontawesome.com/8eaa518e93.js"></script>
+    <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/hubspot.css') }}">    
+	</head>
+  <body class="is-preload">
+    <div id="wrapper">
+      
+      <!-- Header -->y
+      <header id="header">
+        <h1><a href="http://hubspot-developers-1xy773y-5871227.hs-sites.com/">SimTalk Blog</a></h1>
+        <nav class="links">
+          <ul>
+            <li><a href="http://hubspot-developers-1xy773y-5871227.hs-sites.com/">Home</a></li>
+            <li><a href="{{ group.absolute_url }}/about">About</a></li>
+            <li><a href="{{ group.absolute_url }}/tag/nursing-education">NurseEd</a></li>
+            <li><a href="{{ group.absolute_url }}/tag/moulage-education">MoulageEd</a></li>
+            <li><a href="{{ group.absolute_url }}/tag/pharm-education">PharmEd</a></li>
+            <li><a href="{{ group.absolute_url }}/tag/ct-education">CTEd</a></li>
+            <li><a href="{{ group.absolute_url }}/tag/pt-education">PTEd</a></li>
+            <li><a href="https://www.pocketnurse.com/">Pocket Nurse</a></li>
+          </ul>
+        </nav>
+      </header> 
+        
+      {% module_block module "module_1563809486063160" module_id=8717303, overrideable=True, path='/Dev/Blog Future Design/Custom Modules/Site Search Results Dev', widget_name='Site Search Results Dev', label='Site Search Results Dev' %}
+      {% end_module_block %}  
+      
+      <!-- Sidebar -->
+      <section id="sidebar">
+
+        <!-- Intro -->
+        <section id="intro">
+          <a href="#" class="image"><img src="https://cdn2.hubspot.net/hubfs/5871227/simtalkblog-head-logo.png" /></a>
+          <header>
+            <h2>SimTalk Blog</h2>
+            <p>Simulation in Healthcare Education</p>
+          </header>
+        </section>
+
+        <!-- Posts List -->
+        <section>
+          <h2>Popular Posts</h2>
+          <ul class="posts">
+            {% set pop_posts = blog_popular_posts('default', 5) %}   
+            {% for pop_post in pop_posts %}
+            <li>
+              <article>
+                <header>
+                  <h3><a href="{{ pop_post.absolute_url }}">{{ pop_post.name }}</a></h3>
+                  <time class="published">{{ pop_post.publish_date|datetimeformat('%B %e, %Y') }}</time>
+                </header>
+                <a href="{{ pop_post.absolute_url }}" class="image"><img src="{{ pop_post.featured_image }}" alt="Popular post featured image" /></a>
+              </article>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+
+        <!-- Popular Tags -->
+        <section>
+          <h2>Popular Tags</h2>
+          <ul class="posts">
+            {% post_filter "module_149924429563569" filter_type='topic', max_links=5, overrideable=False, select_blog='default', label='Post Filter' %}
+          </ul>
+        </section>
+
+        <!-- Archives -->
+        <section>
+          <h2>Archives</h2>
+          <ul class="posts">
+            {% post_filter "post_filter" overrideable=False, cell=False, cells='[]', root=False, row=False, expand_link_text='see all', filter_type='month', max_links=5, select_blog='default', label='ARCHIVES' %}
+          </ul>
+        </section>
+
+        <section>
+          <h2>Stay Updated</h2>
+          <a class="twitter-timeline" data-width="450" data-height="350" data-dnt="true"  href="https://twitter.com/Pocket_Nurse?ref_src=twsrc%5Etfw">Tweets by Pocket_Nurse</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </section>
+
+        <section>
+          <h2>Products</h2>
+          <ul class="products">
+            <li><a href="https://www.pocketnurse.com/default/products/demo-dose">Demo Dose</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/furniture">Furniture</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/manikins-simulators">Manikins and Task Trainers</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/moulage">Moulage</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/patient-care">Patient Care</a></li>
+            <li><a href="https://www.pocketnurse.com/default/products/pharm-lab">Pharmacy / IV Supplies</a></li>        
+          </ul>
+        </section>
+
+        <!-- About -->
+        <section class="blurb">
+          <h2>About</h2>
+          <p>Pocket Nurse is a nurse-owned-and-operated company that specializes in medical education and simulation technology solutions.</p>
+          <ul class="actions">
+            <li><a href="{{ group.absolute_url }}/about" class="button">Learn More</a></li>
+          </ul>
+        </section>
+
+        <!-- Footer -->
+        <section id="footer">
+          <ul class="icons">
+            <li><a href="https://www.facebook.com/PocketNurseEnt/"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://twitter.com/Pocket_Nurse"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/pocketnurse/"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://www.youtube.com/channel/UCWcPOEgDxgVP-XoiPDIX30w"><i class="fab fa-youtube"></i></a></li>
+          </ul>
+        </section>
+
+      </section>      
+    </div>
+    
+  <!-- Scripts -->
+    
+    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/jquery.js') }}"></script>
+    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/browser.js') }}"></script>
+    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/breakpoints.js') }}"></script>
+    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/util.js') }}"></script>
+    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/main.js') }}"></script>
+
+    {{ standard_footer_includes }}
+  </body>
+</html>

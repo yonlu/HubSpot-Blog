@@ -38,3 +38,12 @@
 .widget-module ul li a {
  border-bottom: none; 
 }
+
+.hs-search-field__input {
+ background-color: #fff;
+ color: rgb(60, 59, 59);
+}
+
+#comments-listing {
+ margin: 50px 0;
+}
