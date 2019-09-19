@@ -27,7 +27,7 @@ Blog's root directory URL: `{{ group.absolute_url }}`
 
 Search bar HubSpot module:
 
-``
+<code>
   <div class="hs-search-field"> 
     <div class="hs-search-field__bar"> 
       <form action="/{{ site_settings.content_search_results_page_path }}">
@@ -56,7 +56,7 @@ Search bar HubSpot module:
     </div>
     <ul class="hs-search-field__suggestions"></ul>
   </div>
-``              
+</code>              
 
 Standard HubSpot blog content areas are created with a master if statement that evaluates whether the user is looking at a listing or a individual post. `{% if is_listing_view %}` checks if it is a listing, otherwise it will render the HTML for a post.\
 
