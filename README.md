@@ -1,7 +1,6 @@
 # HubSpot-Blog
 
 Template used by SimTalkBlog, using the HubSpot CMS platform.
-<<<<<<< HEAD
 
 ## Project file structure
 
@@ -11,6 +10,3 @@ Template used by SimTalkBlog, using the HubSpot CMS platform.
 `assets/css/fontawesome-all.css` is Font Awesome's icons package.
 `assets/css/hubspot.css` is used for styling HubSpot modules and additional markup.
 `assets/css/main.css` is for general styling of the HTML template.
-=======
-`blog-future.html` is the template with HubL variables included.
->>>>>>> 1528ac0265705bd9a31e961b7d90e88724d5dae7
