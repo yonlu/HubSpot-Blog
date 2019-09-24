@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
 	<head>
 		<title>{{ content.html_title }}</title>
@@ -7,32 +7,31 @@
     <meta name="description" content="{{ content.meta_description }}">
     {{ standard_header_includes }}
     <script src="https://kit.fontawesome.com/8eaa518e93.js"></script>
-    <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/fontawesome-all.css') }}">
-    <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/main.css') }}">
-    <link rel="stylesheet" href="{{ get_public_template_url('/Dev/Blog Future Design/assets/css/hubspot.css') }}">    
+    <link rel="stylesheet" href="{{ get_public_template_url('/SimTalk Blog 2019/assets/css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ get_public_template_url('/SimTalk Blog 2019/assets/css/hubspot.css') }}">
+    <link rel="stylesheet" href="{{ get_public_template_url('/SimTalk Blog 2019/assets/css/main.css') }}">       
 	</head>
   <body class="is-preload">
     <div id="wrapper">
       
-      <!-- Header -->y
+      <!-- Header -->
       <header id="header">
-        <h1><a href="http://hubspot-developers-1xy773y-5871227.hs-sites.com/">SimTalk Blog</a></h1>
+        <h1><a href="https://blog.simtalkblog.com/blog">SimTalk Blog</a></h1>
         <nav class="links">
           <ul>
-            <li><a href="http://hubspot-developers-1xy773y-5871227.hs-sites.com/">Home</a></li>
+            <li><a href="https://blog.simtalkblog.com/blog">Home</a></li>
             <li><a href="{{ group.absolute_url }}/about">About</a></li>
-            <li><a href="{{ group.absolute_url }}/tag/nursing-education">NurseEd</a></li>
-            <li><a href="{{ group.absolute_url }}/tag/moulage-education">MoulageEd</a></li>
-            <li><a href="{{ group.absolute_url }}/tag/pharm-education">PharmEd</a></li>
-            <li><a href="{{ group.absolute_url }}/tag/ct-education">CTEd</a></li>
-            <li><a href="{{ group.absolute_url }}/tag/pt-education">PTEd</a></li>
+								<li><a href="https://blog.simtalkblog.com/blog/topic/nursing-education">NurseEd</a></li>
+								<li><a href="https://blog.simtalkblog.com/blog/topic/moulage">MoulageEd</a></li>
+								<li><a href="https://blog.simtalkblog.com/blog/topic/pharm-tech">PharmEd</a></li>
+                <li><a href="https://blog.simtalkblog.com/blog/topic/cte">CTEd</a></li>
+                <li><a href="https://blog.simtalkblog.com/blog/topic/pt">PTEd</a></li>
             <li><a href="https://www.pocketnurse.com/">Pocket Nurse</a></li>
           </ul>
         </nav>
       </header> 
         
-      {% module_block module "module_1563809486063160" module_id=8717303, overrideable=True, path='/Dev/Blog Future Design/Custom Modules/Site Search Results Dev', widget_name='Site Search Results Dev', label='Site Search Results Dev' %}
-      {% end_module_block %}  
+      {% module "module_156924955796451" path="/SimTalk Blog 2019/Custom Modules/Site Search Results copy.module", label="Site Search Results copy" %}
       
       <!-- Sidebar -->
       <section id="sidebar">
@@ -45,7 +44,7 @@
             <p>Simulation in Healthcare Education</p>
           </header>
         </section>
-
+        
         <!-- Posts List -->
         <section>
           <h2>Popular Posts</h2>
@@ -122,12 +121,13 @@
     
   <!-- Scripts -->
     
-    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/jquery.js') }}"></script>
-    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/browser.js') }}"></script>
-    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/breakpoints.js') }}"></script>
-    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/util.js') }}"></script>
-    <script src="{{ get_public_template_url('/Dev/Blog Future Design/assets/js/main.js') }}"></script>
+			<script src="{{ get_public_template_url('/SimTalk Blog 2019/assets/js/jquery.js') }}"></script>
+			<script src="{{ get_public_template_url('/SimTalk Blog 2019/assets/js/browser.js') }}"></script>
+			<script src="{{ get_public_template_url('/SimTalk Blog 2019/assets/js/breakpoints.js') }}"></script>
+			<script src="{{ get_public_template_url('/SimTalk Blog 2019/assets/js/util.js') }}"></script>
+			<script src="{{ get_public_template_url('/SimTalk Blog 2019/assets/js/main.js') }}"></script>
 
     {{ standard_footer_includes }}
   </body>
 </html>
+
