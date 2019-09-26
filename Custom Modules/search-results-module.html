@@ -1,0 +1,197 @@
+<div id="main">
+  <div class="hs-search-field"> 
+    <div class="hs-search-field__bar"> 
+      <form style="padding-left: 1em;" action="/{{ site_settings.content_search_results_page_path }}">
+        {% if module.field_label %}
+        <label for="term">{{ module.field_label }}</label>
+        {% endif %}
+        <input type="text" class="hs-search-field__input" name="term" autocomplete="off" aria-label="{{ module.field_label || "Search" }}" placeholder="Search for a post...">
+        {% if module.content_types.website_pages %}
+        <input type="hidden" name="type" value="SITE_PAGE">
+        {% endif %}
+        {% if module.content_types.landing_pages %}
+        <input type="hidden" name="type" value="LANDING_PAGE">
+        {% endif %}
+        {% if module.content_types.blog_posts %}
+        <input type="hidden" name="type" value="BLOG_POST">
+        <input type="hidden" name="type" value="LISTING_PAGE">
+        {% endif %}
+        {% if module.content_types.knowledge_articles %}
+        <input type="hidden" name="type" value="KNOWLEDGE_ARTICLE">
+        {% endif %}
+
+        {% if module.include_search_button %}
+        <button aria-label="Search">{% icon name="search" style="solid" %}</button>
+        {% endif %}
+      </form>
+    </div>
+    <ul class="hs-search-field__suggestions"></ul>
+  </div>
+
+  <div class="hs-search-results2">
+  <template class="hs-search-results__template">
+    <article class="post">
+      <header>
+        <div class="title">
+          <h2><a class="hs-search-results__title" href="{{ post.absolute_url }}">{{ post.name }}</a></h2>	
+        </div>
+      </header>
+        {% if module.display_featured_images %}
+        <div class="hs-search-results__featured-image">
+          <img src="">
+          <a href="{{ post.absolute_url }}" class="image featured"><img src="" alt="Featured post" /></a>
+        </div>
+        {% endif %}
+        <p class="hs-search-results__description">Description</p>
+    </article>      
+  </template>
+  <ul id="hsresults" class="hs-search-results__listing"></ul>
+  <div class="hs-search-results__pagination" data-search-path="{{ site_settings.content_search_results_page_path }}">
+    <a href="" class="hs-search-results__prev-page {% if not last_page_num %}disabled {% endif %}button large previous"></a>
+    <a href="" class="hs-search-results__next-page {% if not next_page_num %}disabled {% endif %}button large next"></a>
+  </div>
+</div>
+</div>
+
+<script>
+var hsResultsPage = function(_resultsClass) {
+    
+    function buildResultsPage(_instance) {
+        var resultTemplate = _instance.querySelector('.hs-search-results__template'),
+            resultsSection = _instance.querySelector('.hs-search-results__listing'),
+            searchPath = _instance.querySelector('.hs-search-results__pagination').getAttribute('data-search-path'),
+            prevLink = _instance.querySelector('.hs-search-results__prev-page'),
+            nextLink = _instance.querySelector('.hs-search-results__next-page');
+          
+        var searchParams =  new URLSearchParams(window.location.search.slice(1));
+
+        function getTerm() {
+            return searchParams.get('term') || "";
+        }
+        function getOffset() {
+            return parseInt(searchParams.get('offset')) || 0;
+        }
+        function getLimit() {
+            return parseInt(searchParams.get('limit'));
+        }
+        function addResult(title, url, description, featuredImage) {
+            var newResult = document.importNode(resultTemplate.content, true);
+            function isFeaturedImageEnabled() {
+                if (newResult.querySelector('.hs-search-results__featured-image > img')) {
+                    return true;
+                } 
+            }
+            newResult.querySelector('.hs-search-results__title').innerHTML = title;
+            newResult.querySelector('.hs-search-results__title').href = url;
+            newResult.querySelector('.hs-search-results__description').innerHTML = description;
+            if (typeof featuredImage !== 'undefined' && isFeaturedImageEnabled()) {
+                //newResult.querySelector('.hs-search-results__featured-image > img').src = featuredImage;
+                newResult.querySelector('.hs-search-results__featured-image > a > img').src = featuredImage;
+                console.log('true');
+
+            }
+            resultsSection.appendChild(newResult);
+        }
+        function fillResults(results) {
+            results.results.forEach(function(result, i){
+                addResult(result.title, result.url, result.description, result.featuredImageUrl);
+            });
+        }
+        function emptyPagination() {
+            prevLink.innerHTML = "";
+            nextLink.innerHTML = "";
+        }
+        function emptyResults(searchedTerm) {
+            resultsSection.innerHTML = 	"<div class=\"hs-search__no-results\"><p>Hi. There are no results for \"" + searchedTerm + "\"</p>" +
+                                        "<p>Try rewording your query, or browse through our site.</p></div>";
+        }
+        function setSearchBarDefault(searchedTerm) {
+            var searchBars = document.querySelectorAll('.hs-search-field__input');
+            Array.prototype.forEach.call(searchBars, function(el){
+                el.value = searchedTerm;
+            });   
+        }
+        function httpRequest(term, offset) {
+            var SEARCH_URL = "/_hcms/search?",
+                requestUrl = SEARCH_URL + searchParams + "&analytics=true",
+                request = new XMLHttpRequest();
+    
+            request.open('GET', requestUrl, true);
+            request.onload = function() {
+                if (request.status >= 200 && request.status < 400) {
+                    var data = JSON.parse(request.responseText);
+	                  setSearchBarDefault(data.searchTerm);
+                    if (data.total > 0) {
+                        fillResults(data);
+                        paginate(data);
+                    }
+                    else {
+                        emptyResults(data.searchTerm);
+                        emptyPagination();
+                    }
+                }
+                else {
+                    console.error('Server reached, error retrieving results.');
+                }
+            };
+            request.onerror = function() {
+                console.error('Could not reach the server.');
+            };
+            request.send();
+        }
+        function paginate(results) {
+            var updatedLimit = getLimit() || results.limit; 	
+    
+            function hasPreviousPage() {
+                return results.page > 0;
+            }
+            function hasNextPage() {
+                return results.offset <= (results.total - updatedLimit);
+            }
+    
+            if (hasPreviousPage()) {
+                var prevParams = new URLSearchParams(searchParams.toString());
+                prevParams.set('offset', (results.page * updatedLimit) - parseInt(updatedLimit));
+                prevLink.href = "/" + searchPath + "?" + prevParams; 
+                prevLink.innerHTML = "&lt; Previous page";
+            } 
+            else {
+                prevLink.parentNode.removeChild(prevLink);
+            }
+
+            if (hasNextPage()) {
+                var nextParams = new URLSearchParams(searchParams.toString());
+                nextParams.set('offset', (results.page * updatedLimit) + parseInt(updatedLimit));
+                nextLink.href = "/" + searchPath + "?" + nextParams; 
+                nextLink.innerHTML = "Next page &gt;";
+            } 
+            else {
+                nextLink.parentNode.removeChild(nextLink);
+            }
+        }
+        var getResults = (function() {
+            if (getTerm()) {
+                httpRequest(getTerm(), getOffset());
+            }
+            else {
+                emptyPagination();
+            }
+        })();
+    }
+    (function() {
+        var searchResults = document.querySelectorAll(_resultsClass);
+        Array.prototype.forEach.call(searchResults, function(el){
+            buildResultsPage(el);
+        });
+    })();
+}
+  
+if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading"){
+    var resultsPages = hsResultsPage('.hs-search-results2');
+} 
+else {
+    document.addEventListener('DOMContentLoaded', function() {
+        var resultsPages = hsResultsPage('.hs-search-results2');
+    });
+}
+</script>

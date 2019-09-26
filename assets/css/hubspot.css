@@ -47,3 +47,12 @@
 #comments-listing {
  margin: 50px 0;
 }
+
+.post p img {
+ max-width: 100%;
+ height: auto;
+}
+
+.post footer {
+ font-size: 80%; 
+}
